@@ -1,0 +1,27 @@
+name: Technical review
+description: Offer a critical review of a document
+title: "Review: "
+labels: ["review"]
+body:
+  - type: input
+    id: doc
+    attributes:
+      label: Which document?
+    validations:
+      required: true
+  - type: textarea
+    id: expertise
+    attributes:
+      label: Relevant experience
+      description: Optional. Helps us weigh the feedback.
+  - type: textarea
+    id: concerns
+    attributes:
+      label: Your main concerns
+      description: What is wrong, missing or overstated?
+    validations:
+      required: true
+  - type: textarea
+    id: strengths
+    attributes:
+      label: What holds up well?
