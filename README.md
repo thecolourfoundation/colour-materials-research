@@ -1,56 +1,159 @@
-# Colour: Supply-Secure High-Temperature Magnets
+<div align="center">
 
-Open research notes from **Colour**, an early-stage advanced materials company founded by **Malik**.
+# Colour Research
 
-Colour is investigating whether high-temperature sintered neodymium-iron-boron (NdFeB) magnets can be made with far less dysprosium (Dy) and terbium (Tb) by combining two techniques from the published literature: hydrogen-based processing of recycled magnet scrap, and grain boundary diffusion of heavy rare earths.
+### Open notes on thermal composites and high-temperature magnets
 
-## Status
+*Literature reviews, primers and open questions for engineers, researchers and curious builders.*
 
-**Pre-experimental.** Everything in this repository is literature review and planning. There is no Colour test data yet. Targets in the white paper are labeled *Proposed* because they are design goals we intend to test, not results. When we have independent test data, including negative results, it will be published here.
+![Status](https://img.shields.io/badge/status-pre--experimental-orange) ![Content](https://img.shields.io/badge/content-CC%20BY%204.0-blue) ![Corrections](https://img.shields.io/badge/corrections-welcome-brightgreen)
 
-## What is in this repository
+[Start here](#start-here) &middot; [Primers](docs/) &middot; [Reviews](reviews/) &middot; [Cite](#how-to-cite) &middot; [Contribute](CONTRIBUTING.md)
 
-| File | What it is | Read it if you are |
-|---|---|---|
-| [literature-review.md](literature-review.md) | A plain-language technical review of NdFeB recycling via hydrogen processing and of grain boundary diffusion, with open questions and the patent landscape | A materials scientist, engineer, or advisor checking our technical grounding |
-| [white-paper.md](white-paper.md) | The technical and commercial case: the supply problem, our hypothesis, the validation plan, kill criteria and risks | An investor, accelerator reviewer, customer or partner |
-
-## The short version
-
-1. Demand for magnet rare earths has doubled since 2015 and is expected to grow by about another third by 2030.
-2. Heavy rare earths (Dy, Tb) keep magnets from weakening in hot motors, and their processing is concentrated in China, which has used export controls since April 2025.
-3. Two established techniques could reduce that dependence: grain boundary diffusion (use less Dy/Tb) and hydrogen processing of scrap (use less fresh material).
-4. Whether the two can be combined into a repeatable, patent-clear product is **not yet known**. Key processes in this space are patented, so a freedom-to-operate review comes before any equipment spend.
-5. Our plan is to find out cheaply: customer-defined specs, independent contract-lab test data, and a named technical advisor, before committing capital.
-
-## Plan at a glance
-
-| Window | Goal | Pass test |
-|---|---|---|
-| Months 0-3 | 30 customer calls, spec from 2-3 buyers, named magnetics advisor | At least 2 buyers confirm a spec and agree to evaluate samples |
-| Months 1-6 | Identify and characterize 3 scrap feedstock sources | Composition consistent enough to hit the target spec |
-| Months 3-9 | 5-10 contract-lab sample batches, independent test report, freedom-to-operate review | Samples meet the target spec; a clear IP path exists |
-| Months 9-18 | Paid customer evaluations | At least 1 customer qualifies samples |
-
-We stop or change material if no buyer will provide a spec, if samples cannot meet target, if feedstock is too inconsistent, or if freedom to operate cannot be established at acceptable cost.
-
-## How to engage
-
-- **Found an error or a missing reference?** Please open an issue on this repository. Corrections are welcome and will be credited.
-- **Magnetics or recycling expert?** If you have worked on sintered NdFeB, grain boundary diffusion or magnet recycling, we would value a critical read. Open an issue titled *Technical review*.
-- **Motor, drone, robotics or actuator maker?** We are collecting real specification requirements. Open an issue titled *Customer spec*.
-
-## Ground rules for this repository
-
-- Claims are separated into established science and hypotheses.
-- Every external fact carries a reference. References should be verified against their original source before being relied on.
-- No market, cost or performance figures are stated without a source or a clear label saying they are proposals.
-- Nothing here is legal, patent or investment advice.
-
-## License
-
-Written content in this repository is shared for reading and discussion. When you publish the repository on GitHub, add a license through the *Add file > Create new file > LICENSE* flow. Creative Commons Attribution 4.0 (CC BY 4.0) is a sensible default for documents like these.
+</div>
 
 ---
 
-Founder: Malik | Colour | Last updated: 31 October 2026
+## Abstract
+
+Two materials problems sit under a lot of modern hardware: **getting heat out** of dense electronics, and **keeping high-performance magnets working when hot** without depending on scarce heavy rare earths. This repository collects what the published literature says about both, explains the underlying science in plain language, and records the questions that are still open.
+
+It covers two programmes:
+
+1. **Copper-diamond thermal composites:** metal-matrix composites for heat spreading and baseplates in power electronics.
+2. **High-temperature sintered NdFeB magnets:** recycling magnet scrap with hydrogen, and using less dysprosium and terbium through grain boundary diffusion.
+
+**Status: pre-experimental.** Everything here is literature synthesis and teaching material. Colour has no validated samples and no measured data of its own yet, and nothing in this repository claims otherwise. When we do have data, including negative results, it will be published here with its methods.
+
+## Why this matters
+
+- **Heat limits electronics.** Thermal materials maker Element Six states that over half of electronic device failures are linked to heat, and reports a commercial copper-diamond composite at about 800 W/mK, roughly twice copper. These are manufacturer statements, not independent findings.
+- **Magnet supply is fragile.** The International Energy Agency reports that demand for magnet rare earths has doubled since 2015 and may grow by another third by 2030, and that China placed export controls on seven heavy rare earths in April 2025.
+- **The hard problems are specific.** In copper-diamond it is the **interface**, because copper does not wet diamond. In magnets it is **using less heavy rare earth** without losing high-temperature coercivity.
+
+## Start here
+
+| If you are... | Read this first |
+|---|---|
+| New to the field | [Heat transport and composites](docs/01-heat-transport-and-composites.md), then the [glossary](docs/08-glossary.md) |
+| A materials scientist | [Interfaces and wetting](docs/02-interfaces-and-wetting.md) and [processing routes](docs/03-processing-routes.md) |
+| An engineer evaluating materials | [Measurement and characterisation](docs/04-measurement-and-characterisation.md) and [packaging and qualification](docs/05-packaging-and-qualification.md) |
+| Interested in magnets | [NdFeB recycling and heavy rare earth reduction](reviews/literature-review.md) |
+| An investor or partner | [White paper](reviews/white-paper.md) and the [roadmap](ROADMAP.md) |
+| A reviewer or critic | [Research integrity](docs/06-research-integrity.md), then open an issue |
+
+## The 60-second version
+
+### Copper-diamond thermal composites
+
+- Diamond conducts heat far better than copper but is hard to shape. Copper is easier. A composite tries to get most of both.
+- Conductivity and thermal expansion can be tuned by the diamond fraction, which matters because mismatched expansion cracks joints during thermal cycling.
+- **The interface limits performance.** A thin carbide layer from elements such as Ti, Cr, W or B can bond the two, but too much of it blocks heat.
+- Published results vary widely. Examples reported in the literature include about 690 W/mK for a W-coated diamond composite and 554 W/mK with only 93 MPa tensile strength for a Ti-doped copper matrix, showing the trade-off between conductivity and strength.
+- The composite is very hard to machine, which affects cost and what shapes are realistic.
+
+### High-temperature NdFeB magnets
+
+- Heavy rare earths keep magnets from weakening in hot motors, but they are scarce and supply is concentrated.
+- **Grain boundary diffusion** puts dysprosium or terbium only where it matters, near the grain surfaces, instead of throughout the magnet.
+- **Hydrogen processing of magnet scrap** can turn old magnets into powder for new ones, but the route is patented, and oxygen control is the central practical problem.
+- Feedstock consistency, not chemistry, may be the hardest problem for recycled magnets.
+
+## A learning path
+
+| Step | Topic | File |
+|---|---|---|
+| 1 | How materials people think, heat transport, composites | [docs/01](docs/01-heat-transport-and-composites.md) |
+| 2 | The interface problem | [docs/02](docs/02-interfaces-and-wetting.md) |
+| 3 | How the composite is made | [docs/03](docs/03-processing-routes.md) |
+| 4 | How to measure it properly | [docs/04](docs/04-measurement-and-characterisation.md) |
+| 5 | Packaging, standards and qualification | [docs/05](docs/05-packaging-and-qualification.md) |
+| 6 | Magnets and rare earths | [reviews/literature-review.md](reviews/literature-review.md) |
+| 7 | How we handle evidence | [docs/06](docs/06-research-integrity.md) and [docs/07](docs/07-methodology.md) |
+| 8 | Vocabulary, reading, FAQ and a self-test | [docs/08](docs/08-glossary.md), [docs/09](docs/09-reading-list.md), [FAQ](docs/10-faq.md), [quiz](docs/11-check-yourself.md) |
+
+## Repository map
+
+```
+colour-materials-research/
+├── README.md              You are here
+├── docs/                  Primers, glossary, methodology, reading list, FAQ
+├── reviews/               Literature review (magnets) and white paper
+├── templates/             Customer specification-sheet templates
+├── ROADMAP.md             What we plan to publish, and what we will not
+├── CONTRIBUTING.md        How to correct or extend the work
+├── GOVERNANCE.md          Who decides, and how errors are handled
+├── CODE_OF_CONDUCT.md     How we treat each other
+├── SECURITY.md            Reporting safety or data issues
+├── CHANGELOG.md           Version history
+├── CITATION.cff           Machine-readable citation
+└── .github/               Issue and pull request templates
+```
+
+## How we label evidence
+
+| Label | Meaning |
+|---|---|
+| **Established** | Standard textbook or widely replicated science |
+| **Reported** | A specific result from a named source, which we have not reproduced |
+| **Hypothesis** | A reasoned proposal that we intend to test |
+| **Unknown** | We could not find evidence either way |
+
+If a statement here carries no label, treat it as Reported and check the source. Details are in [research integrity](docs/06-research-integrity.md).
+
+## Open research questions
+
+1. What interface layer thickness maximises conductivity without hurting strength, and how repeatable is it across batches?
+2. How much does diamond particle size and quality change composite conductivity once the interface is controlled?
+3. Which process routes give the best balance of density, interface quality and machinability at plate scale?
+4. How well do coupon-scale thermal measurements predict behaviour in a real module baseplate?
+5. Can grain boundary diffusion work on magnets made partly from recycled powder, and does it behave differently?
+6. How consistent is magnet scrap feedstock across sources, and what limits repeatability?
+7. Where do patents constrain the routes described here, and what remains open?
+
+## Status and roadmap
+
+We publish in stages and label what is plan and what is result. See [ROADMAP.md](ROADMAP.md).
+
+## About Colour
+
+Colour is an early-stage materials company working on these two programmes. **That is a commercial interest, and we disclose it:** we want these materials to work, which can bias judgement. Our safeguards are in [GOVERNANCE.md](GOVERNANCE.md) and [research integrity](docs/06-research-integrity.md). Please challenge our claims.
+
+## Contribute
+
+Corrections, missing references and technical reviews are welcome, especially from people who have worked on metal-matrix composites, powder metallurgy, thermal measurement, power-module reliability, NdFeB magnets or recycling. Start with [CONTRIBUTING.md](CONTRIBUTING.md) or open an issue using one of the templates.
+
+## How to cite
+
+```bibtex
+@misc{colour_research_2026,
+  author       = {{Colour}},
+  title        = {Colour Research: open notes on thermal composites and high-temperature magnets},
+  year         = {2026},
+  howpublished = {GitHub repository},
+  url          = {https://github.com/thecolourfoundation/colour-materials-research}
+}
+```
+
+A machine-readable version is in [CITATION.cff](CITATION.cff).
+
+## Sources at a glance
+
+- International Energy Agency, *Rare earth elements*, executive summary: https://www.iea.org/reports/rare-earth-elements/executive-summary
+- Xue et al., 2025, interface optimization of diamond-copper composites, *Frontiers in Materials*: https://frontiersin.org/journals/materials/articles/10.3389/fmats.2025.1582990/full
+- Review of interface thermal conductance in copper-diamond composites, *Journal of Materials Science* (2020): https://link.springer.com/article/10.1007/s10853-020-05443-3
+- Habibzadeh et al., *ACS Omega* 2023, magnet recycling by hydrogenation: https://doi.org/10.1021/acsomega.3c00299
+
+Full source lists are in each document.
+
+## License
+
+Written content is shared under **Creative Commons Attribution 4.0 (CC BY 4.0)**: you may share and adapt it, including commercially, if you give credit. See [LICENSE-CONTENT.md](LICENSE-CONTENT.md).
+
+## Contact
+
+buildwithcolours@gmail.com &middot; https://thecolourfoundation.github.io/colour-website/
+
+---
+
+<sub>Educational and research material. It is not engineering, legal, patent, safety or investment advice. Powder handling, hydrogen, furnaces and plating chemicals are hazardous: do not attempt processes described here without proper training, facilities and supervision.</sub>
