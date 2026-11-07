@@ -1,0 +1,33 @@
+name: Correction
+description: Report an error or an outdated claim
+title: "Correction: "
+labels: ["correction"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Where is the problem?
+      description: File and section or line.
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong or unclear?
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source for the correction
+      description: Paper, standard, patent or official report. Primary sources are best.
+    validations:
+      required: true
+  - type: dropdown
+    id: credit
+    attributes:
+      label: Credit
+      options:
+        - Credit me by name
+        - Credit me by username
+        - Please keep me anonymous
