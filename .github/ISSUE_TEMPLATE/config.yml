@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security or safety concern
+    url: https://thecolourfoundation.github.io/colour-website/
+    about: Please email buildwithcolours@gmail.com with the subject "Security" or "Safety" instead of opening a public issue.
