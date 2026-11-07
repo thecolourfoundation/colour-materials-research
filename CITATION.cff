@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Colour Research: open notes on thermal composites and high-temperature magnets"
+type: dataset
+authors:
+  - name: "Colour"
+repository-code: "https://github.com/thecolourfoundation/colour-materials-research"
+url: "https://thecolourfoundation.github.io/colour-website/"
+license: CC-BY-4.0
+version: 0.2.0
+date-released: "2026-11-07"
+keywords:
+  - materials science
+  - thermal management
+  - copper-diamond composites
+  - metal-matrix composites
+  - NdFeB magnets
+  - rare earth recycling
